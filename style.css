@@ -1,0 +1,891 @@
+:root {
+    --bg-dark: #151719;
+    --text-light: #ffffff;
+    --text-muted: #8b929e;
+    --primary-teal: #38b2ac;
+    --card-purple: #9f7aea;
+    --card-blue: #667eea;
+    --card-pink: #ed64a6;
+    --bg-panel: #1f2125;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif; /* Lembrete: Troque pela fonte pixelada */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita rolagem horizontal acidental no mobile */
+}
+
+.center {
+    width: 80%;
+    margin: auto;
+}
+
+/* ==========================================================================
+   ESTILOS BASE (MOBILE PRIMEIRO)
+   ========================================================================== */
+
+/* Navbar - Empilhado no celular */
+.navbar {
+    display: flex;
+    flex-direction: column; /* Mantido do Mobile-First */
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 5%; /* Reduzi um pouco o padding vertical para não ficar gigante */
+    
+    /* A Mágica do Background aqui: */
+    background-color: rgba(21, 23, 25, 0.85); /* A cor do seu var(--bg-dark), mas com 85% de opacidade */
+    backdrop-filter: blur(12px); /* Cria o efeito de vidro fosco nativo */
+    -webkit-backdrop-filter: blur(12px); /* Compatibilidade com Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Uma linha divisória quase invisível */
+    
+    /* Comportamento Lógico: Se o header tem fundo, ele deve acompanhar o usuário */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Garante que o header passe por cima de tudo (incluindo o carrossel e o notebook) */
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DO LOGO (HEADER)
+   ========================================================================== */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-teal);
+    cursor: pointer; /* Indica que é interativo */
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    will-change: transform;
+}
+
+/* O hover do logo cria um efeito de brilho e escala leve */
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 15px rgba(56, 178, 172, 0.6);
+}
+
+.navbar nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.navbar nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-teal);
+    color: var(--bg-dark);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Botão ocupa largura total no mobile */
+    max-width: 300px;
+}
+
+/* Hero - Empilhado, centralizado e fontes menores */
+.hero {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 5%;
+    gap: 3rem;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem; /* Ajustado para não quebrar no mobile */
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-form {
+    display: flex;
+    flex-direction: column; /* Inputs e botão empilhados */
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.hero-form input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #333;
+    padding: 0.75rem;
+    color: white;
+    border-radius: 4px;
+}
+
+.hero-checks {
+    list-style: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: left; /* Mantém a lista alinhada para legibilidade */
+    display: inline-block;
+}
+
+.hero-checks div{
+    display: inline-block;
+    color: var(--primary-teal);
+}
+.hero-checks li {
+    margin-bottom: 0.5rem;
+}
+
+/* Mockup de Notebook - Reduzido para caber na tela do celular */
+.hero-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.placeholder-notebook {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.placeholder-notebook .screen {
+    width: 100%;
+    height: 180px; /* Altura reduzida para mobile */
+    background-color: var(--bg-panel);
+    border: 8px solid #222; /* Borda mais fina no mobile */
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.placeholder-notebook .base {
+    width: 110%; 
+    height: 15px; /* Base mais fina no mobile */
+    background-color: #333;
+    border-radius: 0 0 8px 8px;
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.placeholder-notebook .base::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 6px;
+    background-color: #222;
+    border-radius: 0 0 3px 3px;
+}
+
+/* Stats - Empilhado em formato de lista/cards */
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 5%;
+}
+
+.stat-box {
+    background: var(--bg-panel);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.stat-box h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   SEÇÃO SOBRE O JOGO (MOBILE FIRST)
+   ========================================================================== */
+.about-section {
+    padding: 5rem 5%;
+    background-color: var(--bg-dark);
+    /* Um gradiente sutil no fundo para separar visualmente do Hero e das Stats */
+    background-image: linear-gradient(to bottom, #101214, var(--bg-dark)); 
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-text h2 {
+    font-size: 2.2rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Ficha Técnica */
+.spec-card {
+    background-color: var(--bg-panel);
+    border: 1px solid rgba(56, 178, 172, 0.2); /* Borda sutil usando a cor principal */
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra interna para dar profundidade de "painel" */
+}
+
+.spec-card h3 {
+    color: var(--primary-teal);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.spec-list {
+    list-style: none;
+}
+
+.spec-list li {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between; /* Empurra o valor para a direita */
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.spec-list li span {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Remove a borda tracejada do último item */
+.spec-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* ==========================================================================
+   TABLETS E DESKTOPS
+   ========================================================================== */
+@media (min-width: 768px) {
+    .about-container {
+        flex-direction: row;
+        align-items: center; /* Alinha os blocos verticalmente ao centro */
+        gap: 5rem;
+    }
+
+    .about-text {
+        flex: 1.2; /* O texto ocupa um pouco mais de espaço */
+    }
+
+    .about-specs {
+        flex: 1; /* O card ocupa o restante */
+    }
+}
+
+/* Features Grid - 1 coluna no mobile */
+.features-grid {
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.features-grid h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Força 1 coluna no celular */
+    gap: 1.5rem;
+}
+
+.card {
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+    color: white;
+    /* Transição suave para movimento e sombra */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    will-change: transform, box-shadow;
+}
+
+/* O hover segue o mesmo padrão da equipe: levanta o card */
+.card:hover {
+    transform: translateY(-8px);
+    filter: brightness(1.1); /* Deixa a cor levemente mais viva */
+}
+
+/* Sombras coloridas específicas para cada card no hover */
+.card.teal:hover { box-shadow: 0 15px 30px rgba(56, 178, 172, 0.3); }
+.card.purple:hover { box-shadow: 0 15px 30px rgba(159, 122, 234, 0.3); }
+.card.blue:hover { box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3); }
+.card.pink:hover { box-shadow: 0 15px 30px rgba(237, 100, 166, 0.3); }
+/* ==========================================================================
+   CARROSSEL (MOBILE FIRST)
+   ========================================================================== */
+
+.carousel-section {
+    padding: 4rem 0; /* Padding lateral 0 para o carrossel encostar na borda no mobile */
+    text-align: center;
+    overflow: hidden;
+}
+
+.carousel-header {
+    padding: 0 5%;
+    margin-bottom: 3rem;
+}
+
+.carousel-header h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.carousel-header p {
+    color: var(--text-muted);
+}
+
+.carousel-container {
+    width: 100%;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1rem;
+    padding: 0 5%; /* Espaço inicial e final no scroll */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Scroll suave parando nos itens no mobile */
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Esconde scrollbar no Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none; /* Esconde scrollbar no Chrome/Safari */
+}
+
+.carousel-slide {
+    flex: 0 0 85%; /* No celular, o card ocupa 85% da tela */
+    position: relative;
+    scroll-snap-align: center;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0.5; /* Opacidade padrão (inativos) */
+}
+
+/* O card ativo fica 100% visível */
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay Escuro com Texto */
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fundo escuro por cima da imagem */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-slide.active .slide-overlay {
+    opacity: 1; /* Só mostra o texto no slide ativo */
+}
+
+.slide-overlay h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.slide-overlay p {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.slide-btn {
+    background-color: var(--primary-teal);
+    color: var(--bg-dark);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.carousel-slide.active:hover .slide-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Controles (Botões) */
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.control-btn {
+    background-color: #2a2d32;
+    color: var(--text-light);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+/* ==========================================================================
+   SEÇÃO DE EQUIPE (MOBILE FIRST + CARDS + HOVER)
+   ========================================================================== */
+
+.team-section {
+    padding: 5rem 5%;
+    text-align: center;
+    background-color: var(--bg-dark);
+}
+
+.team-header {
+    margin-bottom: 4rem;
+}
+
+.team-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.team-header p {
+    color: var(--text-muted);
+}
+
+/* Container principal usa Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: 1 coluna vertical */
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* O Card em si */
+.team-card {
+    background-color: var(--bg-panel); /* Fundo do card */
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borda sutil inicial */
+    
+    /* A Mágica da Animação de Hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform, box-shadow; /* Otimização de performance no navegador */
+}
+
+/* Ação de Hover: Levanta o card, ilumina a borda e projeta sombra */
+.team-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(56, 178, 172, 0.4); /* Brilho com a cor teal principal */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 178, 172, 0.1);
+}
+
+.avatar-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.team-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--bg-dark); /* Faz a imagem "destacar" do card */
+}
+
+.accent-mark {
+    position: absolute;
+    top: 5px;
+    right: -5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-panel);
+}
+.accent-mark.purple { background-color: var(--card-purple); box-shadow: 0 0 10px var(--card-purple); }
+.accent-mark.teal { background-color: var(--primary-teal); box-shadow: 0 0 10px var(--primary-teal); }
+.accent-mark.blue { background-color: var(--card-blue); box-shadow: 0 0 10px var(--card-blue); }
+.accent-mark.pink { background-color: var(--card-pink); box-shadow: 0 0 10px var(--card-pink); }
+
+.team-name {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.team-role {
+    color: var(--primary-teal);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-bio {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   FOOTER (MOBILE FIRST)
+   ========================================================================== */
+.site-footer {
+    /* Usa um tom ainda mais escuro que o var(--bg-dark) para dar peso e finalizar a página */
+    background-color: #0d0f12; 
+    padding: 4rem 5% 2rem;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+/* Colunas de Links */
+.footer-links, .footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-links h4, .footer-social h4 {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.site-footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block; /* Necessário para o transform funcionar no link */
+}
+
+/* Interação sutil de hover nos links */
+.site-footer a:hover {
+    color: var(--primary-teal);
+    transform: translateX(5px); /* Move levemente para a direita para indicar interatividade */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   TABLETS E DESKTOPS
+   ========================================================================== */
+@media (min-width: 768px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-brand {
+        flex: 2; /* Dá mais espaço de leitura para a descrição do projeto */
+    }
+
+    .footer-links, .footer-social {
+        flex: 1; /* Divide o resto do espaço igualmente */
+    }
+}
+
+/* ==========================================================================
+   TABLETS E DESKTOPS
+   ========================================================================== */
+@media (min-width: 768px) {
+    .team-grid {
+        /* Tablet/Desktop Padrão: 2 colunas e 3 linhas (Grid 2x3 exato) */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (min-width: 1024px) {
+    .team-grid {
+        /* Desktop Largo: 3 colunas e 2 linhas para evitar estiramento vertical */
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+/* Aqueles pequenos detalhes coloridos perto da foto que tem na sua imagem */
+.accent-mark {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.accent-mark.purple { background-color: var(--card-purple); box-shadow: 0 0 10px var(--card-purple); }
+.accent-mark.teal { background-color: var(--primary-teal); box-shadow: 0 0 10px var(--primary-teal); }
+.accent-mark.blue { background-color: var(--card-blue); box-shadow: 0 0 10px var(--card-blue); }
+.accent-mark.pink { background-color: var(--card-pink); box-shadow: 0 0 10px var(--card-pink); }
+
+/* Texto da Biografia */
+.team-bio {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 400px; /* Evita que o texto fique longo demais e cansativo de ler */
+}
+
+/* Nome e Cargo */
+.team-name {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+.team-role {
+    color: var(--primary-teal); /* Usa a cor de destaque principal para o cargo */
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   TABLETS E DESKTOPS
+   ========================================================================== */
+
+.control-btn:hover {
+    background-color: #3f434a;
+}
+
+/* ==========================================================================
+   TABLETS E DESKTOPS
+   ========================================================================== */
+@media (min-width: 768px) {
+    .carousel-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .carousel-slide {
+        flex: 0 0 400px; /* Largura fixa no desktop, igual a imagem de referência */
+        height: 400px;
+    }
+
+    /* O hover no desktop sobrepõe o estado 'active' do scroll */
+    .carousel-slide:hover {
+        opacity: 1;
+    }
+    
+    .carousel-slide:hover .slide-overlay {
+        opacity: 1;
+    }
+}
+
+.card {
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+    color: white;
+}
+
+.card h3 {
+    margin: 1rem 0;
+}
+
+.card.teal { background-color: var(--primary-teal); color: var(--bg-dark); }
+.card.purple { background-color: var(--card-purple); }
+.card.blue { background-color: var(--card-blue); }
+.card.pink { background-color: var(--card-pink); }
+
+
+/* ==========================================================================
+   TABLETS E DESKTOPS (ESCALANDO PARA TELAS MAIORES)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+    
+    /* Retorna o Navbar para a linha horizontal */
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem 5%;
+    }
+    
+    }
+    .navbar nav {
+        margin-left: auto;
+        margin-right: 2rem;
+    }
+
+    .btn-primary {
+        width: auto; /* Remove a largura total do botão */
+    }
+
+    /* Hero volta para layout de 2 colunas */
+    .hero {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        padding: 5rem 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem; /* Retoma o tamanho original da fonte */
+    }
+
+    .hero-form {
+        flex-direction: row; /* Coloca input e botão lado a lado */
+    }
+
+    /* O Notebook ganha suas proporções originais de desktop */
+    .placeholder-notebook {
+        position: relative;
+        z-index: 2; /* Garante que o notebook fique sobre as manchas */
+        width: 100%;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .placeholder-notebook .screen {
+        height: 300px;
+        border: 12px solid #222;
+        font-size: 1rem;
+    }
+
+    .placeholder-notebook .base {
+        width: 115%;
+        height: 25px;
+    }
+    
+        /* As manchas de fundo (glow) */
+    .placeholder-notebook::before {
+        content: '';
+        position: absolute;
+        top: 10%; /* Ajuste a posição vertical */
+        right: -15%; /* Ajuste a posição horizontal para que fiquem para fora do notebook */
+        width: 130%; /* Largura total da mancha */
+        height: 100%; /* Altura total da mancha */
+        background: 
+            radial-gradient(circle at 10% 10%, rgba(56, 178, 172, 0.4) 0%, rgba(56, 178, 172, 0) 50%), /* Mancha Teal à esquerda */
+            radial-gradient(circle at 90% 90%, rgba(102, 126, 234, 0.3) 0%, rgba(102, 126, 234, 0) 60%), /* Mancha Azul à direita */
+            radial-gradient(circle at 50% 50%, rgba(159, 122, 234, 0.2) 0%, rgba(159, 122, 234, 0) 70%); /* Mancha Roxa ao centro */
+        filter: blur(50px); /* Aplica o desfoque para as manchas ficarem suaves */
+        opacity: 0.8; /* Ajuste a opacidade geral */
+        z-index: 1; /* Garante que fiquem atrás do conteúdo do notebook */
+        border-radius: 50%; /* Ajuda a dar forma às manchas */
+        pointer-events: none; /* Garante que as manchas não interfiram em cliques */
+    }
+
+    .placeholder-notebook .base::after {
+        width: 60px;
+        height: 10px;
+    }
+
+    /* Stats lado a lado */
+    .stats {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .stat-box {
+        min-width: 200px;
+        width: auto;
+    }
+
+    /* Features Grid se ajusta automaticamente para várias colunas */
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .team-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .team-grid {
+        /* Cria 2 colunas para telas médias e grandes, replicando exatamente a imagem */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 4rem 2rem;
+    }
+    
