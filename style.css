@@ -13,14 +13,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', -apple-system, sans-serif; /* Lembrete: Troque pela fonte pixelada */
+    font-family: 'Inter', -apple-system, sans-serif;
 }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     line-height: 1.6;
-    overflow-x: hidden; /* Evita rolagem horizontal acidental no mobile */
+    overflow-x: hidden;
 }
 
 .center {
@@ -28,43 +28,100 @@ body {
     margin: auto;
 }
 
-/* ==========================================================================
-   ESTILOS BASE (MOBILE PRIMEIRO)
-   ========================================================================== */
-
-/* Navbar - Empilhado no celular */
-.navbar {
-    display: flex;
-    flex-direction: column; /* Mantido do Mobile-First */
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1rem 5%; /* Reduzi um pouco o padding vertical para não ficar gigante */
-    
-    /* A Mágica do Background aqui: */
-    background-color: rgba(21, 23, 25, 0.85); /* A cor do seu var(--bg-dark), mas com 85% de opacidade */
-    backdrop-filter: blur(12px); /* Cria o efeito de vidro fosco nativo */
-    -webkit-backdrop-filter: blur(12px); /* Compatibilidade com Safari */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Uma linha divisória quase invisível */
-    
-    /* Comportamento Lógico: Se o header tem fundo, ele deve acompanhar o usuário */
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Garante que o header passe por cima de tudo (incluindo o carrossel e o notebook) */
+.btn-primary {
+    background-color: var(--primary-teal);
+    color: var(--bg-dark);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
 }
 
-/* ==========================================================================
-   ANIMAÇÃO DO LOGO (HEADER)
-   ========================================================================== */
+.popover-global {
+    position: absolute;
+    background-color: #21ffdf;
+    color: #1a1a1a;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.popover-global.mostrar {
+    opacity: 1;
+    visibility: visible;
+}
+
+.more-link {
+    color: #21ffdf;
+    text-shadow: 0 0 5px rgba(33, 255, 223, 0.5);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.more-link::after {
+    content: " >";
+    margin-left: 0.5rem;
+    color: #21ffdf;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.more-link:hover {
+    text-shadow: 0 0 10px rgba(33, 255, 223, 0.8);
+}
+
+.more-link:hover::after {
+    transform: translateX(3px);
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 5%;
+    background-color: rgba(21, 23, 25, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar div {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.navbar div nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-teal);
-    cursor: pointer; /* Indica que é interativo */
+    cursor: pointer;
     transition: transform 0.3s ease, text-shadow 0.3s ease;
     will-change: transform;
 }
 
-/* O hover do logo cria um efeito de brilho e escala leve */
 .logo:hover {
     transform: scale(1.05);
     text-shadow: 0 0 15px rgba(56, 178, 172, 0.6);
@@ -83,19 +140,6 @@ body {
     font-size: 0.9rem;
 }
 
-.btn-primary {
-    background-color: var(--primary-teal);
-    color: var(--bg-dark);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%; /* Botão ocupa largura total no mobile */
-    max-width: 300px;
-}
-
-/* Hero - Empilhado, centralizado e fontes menores */
 .hero {
     display: flex;
     flex-direction: column;
@@ -105,7 +149,7 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 2.5rem; /* Ajustado para não quebrar no mobile */
+    font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 3rem;
     text-align: center;
@@ -119,7 +163,7 @@ body {
 
 .hero-form {
     display: flex;
-    flex-direction: column; /* Inputs e botão empilhados */
+    flex-direction: column;
     gap: 0.8rem;
     margin-bottom: 2rem;
 }
@@ -137,19 +181,19 @@ body {
     list-style: none;
     color: var(--text-muted);
     font-size: 0.9rem;
-    text-align: left; /* Mantém a lista alinhada para legibilidade */
+    text-align: left;
     display: inline-block;
 }
 
-.hero-checks div{
+.hero-checks div {
     display: inline-block;
     color: var(--primary-teal);
 }
+
 .hero-checks li {
     margin-bottom: 0.5rem;
 }
 
-/* Mockup de Notebook - Reduzido para caber na tela do celular */
 .hero-image {
     width: 100%;
     display: flex;
@@ -166,9 +210,9 @@ body {
 
 .placeholder-notebook .screen {
     width: 100%;
-    height: 180px; /* Altura reduzida para mobile */
+    height: 180px;
     background-color: var(--bg-panel);
-    border: 8px solid #222; /* Borda mais fina no mobile */
+    border: 8px solid #222;
     border-radius: 6px 6px 0 0;
     display: flex;
     align-items: center;
@@ -179,8 +223,8 @@ body {
 }
 
 .placeholder-notebook .base {
-    width: 110%; 
-    height: 15px; /* Base mais fina no mobile */
+    width: 110%;
+    height: 15px;
     background-color: #333;
     border-radius: 0 0 8px 8px;
     position: relative;
@@ -199,7 +243,6 @@ body {
     border-radius: 0 0 3px 3px;
 }
 
-/* Stats - Empilhado em formato de lista/cards */
 .stats {
     display: flex;
     flex-direction: column;
@@ -224,14 +267,10 @@ body {
     color: var(--text-muted);
 }
 
-/* ==========================================================================
-   SEÇÃO SOBRE O JOGO (MOBILE FIRST)
-   ========================================================================== */
 .about-section {
     padding: 5rem 5%;
     background-color: var(--bg-dark);
-    /* Um gradiente sutil no fundo para separar visualmente do Hero e das Stats */
-    background-image: linear-gradient(to bottom, #101214, var(--bg-dark)); 
+    background-image: linear-gradient(to left, #101214, var(--bg-dark));
 }
 
 .about-container {
@@ -256,13 +295,12 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Ficha Técnica */
 .spec-card {
     background-color: var(--bg-panel);
-    border: 1px solid rgba(56, 178, 172, 0.2); /* Borda sutil usando a cor principal */
+    border: 1px solid rgba(56, 178, 172, 0.2);
     border-radius: 8px;
     padding: 2rem;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra interna para dar profundidade de "painel" */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .spec-card h3 {
@@ -284,7 +322,7 @@ body {
     margin-bottom: 1rem;
     font-size: 0.95rem;
     display: flex;
-    justify-content: space-between; /* Empurra o valor para a direita */
+    justify-content: space-between;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
     padding-bottom: 0.5rem;
 }
@@ -294,33 +332,12 @@ body {
     font-weight: 600;
 }
 
-/* Remove a borda tracejada do último item */
 .spec-list li:last-child {
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-/* ==========================================================================
-   TABLETS E DESKTOPS
-   ========================================================================== */
-@media (min-width: 768px) {
-    .about-container {
-        flex-direction: row;
-        align-items: center; /* Alinha os blocos verticalmente ao centro */
-        gap: 5rem;
-    }
-
-    .about-text {
-        flex: 1.2; /* O texto ocupa um pouco mais de espaço */
-    }
-
-    .about-specs {
-        flex: 1; /* O card ocupa o restante */
-    }
-}
-
-/* Features Grid - 1 coluna no mobile */
 .features-grid {
     padding: 4rem 5%;
     text-align: center;
@@ -333,7 +350,7 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr; /* Força 1 coluna no celular */
+    grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
@@ -342,30 +359,57 @@ body {
     border-radius: 8px;
     text-align: left;
     color: white;
-    /* Transição suave para movimento e sombra */
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
     will-change: transform, box-shadow;
 }
 
-/* O hover segue o mesmo padrão da equipe: levanta o card */
-.card:hover {
-    transform: translateY(-8px);
-    filter: brightness(1.1); /* Deixa a cor levemente mais viva */
+.card h3 {
+    margin: 1rem 0;
 }
 
-/* Sombras coloridas específicas para cada card no hover */
-.card.teal:hover { box-shadow: 0 15px 30px rgba(56, 178, 172, 0.3); }
-.card.purple:hover { box-shadow: 0 15px 30px rgba(159, 122, 234, 0.3); }
-.card.blue:hover { box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3); }
-.card.pink:hover { box-shadow: 0 15px 30px rgba(237, 100, 166, 0.3); }
-/* ==========================================================================
-   CARROSSEL (MOBILE FIRST)
-   ========================================================================== */
+.card:hover {
+    transform: translateY(-8px);
+    filter: brightness(1.1);
+}
+
+.card.teal {
+    background-color: var(--primary-teal);
+    color: var(--bg-dark);
+}
+
+.card.purple {
+    background-color: var(--card-purple);
+}
+
+.card.blue {
+    background-color: var(--card-blue);
+}
+
+.card.pink {
+    background-color: var(--card-pink);
+}
+
+.card.teal:hover {
+    box-shadow: 0 15px 30px rgba(56, 178, 172, 0.3);
+}
+
+.card.purple:hover {
+    box-shadow: 0 15px 30px rgba(159, 122, 234, 0.3);
+}
+
+.card.blue:hover {
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+}
+
+.card.pink:hover {
+    box-shadow: 0 15px 30px rgba(237, 100, 166, 0.3);
+}
 
 .carousel-section {
-    padding: 4rem 0; /* Padding lateral 0 para o carrossel encostar na borda no mobile */
+    padding: 4rem 0;
     text-align: center;
     overflow: hidden;
+    background-image: linear-gradient(to right, #101214, var(--bg-dark));
 }
 
 .carousel-header {
@@ -384,64 +428,69 @@ body {
 
 .carousel-container {
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
     position: relative;
+    overflow: hidden;
 }
 
 .carousel-track {
     display: flex;
     gap: 1rem;
-    padding: 0 5%; /* Espaço inicial e final no scroll */
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Scroll suave parando nos itens no mobile */
     scroll-behavior: smooth;
-    scrollbar-width: none; /* Esconde scrollbar no Firefox */
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .carousel-track::-webkit-scrollbar {
-    display: none; /* Esconde scrollbar no Chrome/Safari */
+    display: none;
 }
 
 .carousel-slide {
-    flex: 0 0 85%; /* No celular, o card ocupa 85% da tela */
+    flex: 0 0 auto;
+    width: 300px;
     position: relative;
     scroll-snap-align: center;
-    border-radius: 4px;
+    border-radius: 8px;
     overflow: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0.5; /* Opacidade padrão (inativos) */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5;
 }
 
-/* O card ativo fica 100% visível */
 .carousel-slide.active {
     opacity: 1;
+    transform: scale(1.05);
 }
 
 .carousel-slide img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
 }
 
-/* Overlay Escuro com Texto */
 .slide-overlay {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Fundo escuro por cima da imagem */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background: rgba(31, 33, 37, 0.9);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.carousel-slide.active .slide-overlay,
+.carousel-slide:hover .slide-overlay {
+    transform: translateY(0);
 }
 
 .carousel-slide.active .slide-overlay {
-    opacity: 1; /* Só mostra o texto no slide ativo */
+    opacity: 1;
 }
 
 .slide-overlay h3 {
@@ -473,31 +522,28 @@ body {
     transform: translateY(0);
 }
 
-/* Controles (Botões) */
 .carousel-controls {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .control-btn {
-    background-color: #2a2d32;
-    color: var(--text-light);
+    background: #21ffdf;
+    color: #1a1a1a;
     border: none;
-    width: 40px;
-    height: 40px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
+    transition: background 0.2s;
 }
-/* ==========================================================================
-   SEÇÃO DE EQUIPE (MOBILE FIRST + CARDS + HOVER)
-   ========================================================================== */
+
+.control-btn:hover {
+    background-color: #3f434a;
+}
 
 .team-section {
     padding: 5rem 5%;
@@ -519,35 +565,30 @@ body {
     color: var(--text-muted);
 }
 
-/* Container principal usa Grid */
 .team-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Mobile: 1 coluna vertical */
+    grid-template-columns: 1fr;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* O Card em si */
 .team-card {
-    background-color: var(--bg-panel); /* Fundo do card */
+    background-color: var(--bg-panel);
     padding: 2.5rem 2rem;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Borda sutil inicial */
-    
-    /* A Mágica da Animação de Hover */
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    will-change: transform, box-shadow; /* Otimização de performance no navegador */
+    will-change: transform, box-shadow;
 }
 
-/* Ação de Hover: Levanta o card, ilumina a borda e projeta sombra */
 .team-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(56, 178, 172, 0.4); /* Brilho com a cor teal principal */
+    border-color: rgba(56, 178, 172, 0.4);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 178, 172, 0.1);
 }
 
@@ -561,33 +602,48 @@ body {
     height: 90px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--bg-dark); /* Faz a imagem "destacar" do card */
+    border: 3px solid var(--bg-dark);
 }
 
 .accent-mark {
     position: absolute;
-    top: 5px;
-    right: -5px;
-    width: 14px;
-    height: 14px;
+    top: 0;
+    right: -10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    border: 2px solid var(--bg-panel);
 }
-.accent-mark.purple { background-color: var(--card-purple); box-shadow: 0 0 10px var(--card-purple); }
-.accent-mark.teal { background-color: var(--primary-teal); box-shadow: 0 0 10px var(--primary-teal); }
-.accent-mark.blue { background-color: var(--card-blue); box-shadow: 0 0 10px var(--card-blue); }
-.accent-mark.pink { background-color: var(--card-pink); box-shadow: 0 0 10px var(--card-pink); }
+
+.accent-mark.purple {
+    background-color: var(--card-purple);
+    box-shadow: 0 0 10px var(--card-purple);
+}
+
+.accent-mark.teal {
+    background-color: var(--primary-teal);
+    box-shadow: 0 0 10px var(--primary-teal);
+}
+
+.accent-mark.blue {
+    background-color: var(--card-blue);
+    box-shadow: 0 0 10px var(--card-blue);
+}
+
+.accent-mark.pink {
+    background-color: var(--card-pink);
+    box-shadow: 0 0 10px var(--card-pink);
+}
 
 .team-name {
     color: var(--text-light);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
 }
 
 .team-role {
     color: var(--primary-teal);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
@@ -597,15 +653,13 @@ body {
 .team-bio {
     color: var(--text-muted);
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
 }
 
-/* ==========================================================================
-   FOOTER (MOBILE FIRST)
-   ========================================================================== */
 .site-footer {
-    /* Usa um tom ainda mais escuro que o var(--bg-dark) para dar peso e finalizar a página */
-    background-color: #0d0f12; 
+    background-color: #0d0f12;
     padding: 4rem 5% 2rem;
     color: var(--text-muted);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -625,14 +679,15 @@ body {
     line-height: 1.6;
 }
 
-/* Colunas de Links */
-.footer-links, .footer-social {
+.footer-links,
+.footer-social {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.footer-links h4, .footer-social h4 {
+.footer-links h4,
+.footer-social h4 {
     color: var(--text-light);
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
@@ -643,13 +698,12 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.2s ease, transform 0.2s ease;
-    display: inline-block; /* Necessário para o transform funcionar no link */
+    display: inline-block;
 }
 
-/* Interação sutil de hover nos links */
 .site-footer a:hover {
     color: var(--primary-teal);
-    transform: translateX(5px); /* Move levemente para a direita para indicar interatividade */
+    transform: translateX(5px);
 }
 
 .footer-bottom {
@@ -659,150 +713,22 @@ body {
     font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   TABLETS E DESKTOPS
-   ========================================================================== */
 @media (min-width: 768px) {
-    .footer-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .footer-brand {
-        flex: 2; /* Dá mais espaço de leitura para a descrição do projeto */
-    }
-
-    .footer-links, .footer-social {
-        flex: 1; /* Divide o resto do espaço igualmente */
-    }
-}
-
-/* ==========================================================================
-   TABLETS E DESKTOPS
-   ========================================================================== */
-@media (min-width: 768px) {
-    .team-grid {
-        /* Tablet/Desktop Padrão: 2 colunas e 3 linhas (Grid 2x3 exato) */
-        grid-template-columns: repeat(2, 1fr); 
-    }
-}
-
-@media (min-width: 1024px) {
-    .team-grid {
-        /* Desktop Largo: 3 colunas e 2 linhas para evitar estiramento vertical */
-        grid-template-columns: repeat(3, 1fr); 
-    }
-}
-
-/* Aqueles pequenos detalhes coloridos perto da foto que tem na sua imagem */
-.accent-mark {
-    position: absolute;
-    top: 0;
-    right: -10px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-.accent-mark.purple { background-color: var(--card-purple); box-shadow: 0 0 10px var(--card-purple); }
-.accent-mark.teal { background-color: var(--primary-teal); box-shadow: 0 0 10px var(--primary-teal); }
-.accent-mark.blue { background-color: var(--card-blue); box-shadow: 0 0 10px var(--card-blue); }
-.accent-mark.pink { background-color: var(--card-pink); box-shadow: 0 0 10px var(--card-pink); }
-
-/* Texto da Biografia */
-.team-bio {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    max-width: 400px; /* Evita que o texto fique longo demais e cansativo de ler */
-}
-
-/* Nome e Cargo */
-.team-name {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 0.2rem;
-}
-
-.team-role {
-    color: var(--primary-teal); /* Usa a cor de destaque principal para o cargo */
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-/* ==========================================================================
-   TABLETS E DESKTOPS
-   ========================================================================== */
-
-.control-btn:hover {
-    background-color: #3f434a;
-}
-
-/* ==========================================================================
-   TABLETS E DESKTOPS
-   ========================================================================== */
-@media (min-width: 768px) {
-    .carousel-header h2 {
-        font-size: 2.5rem;
-    }
-
-    .carousel-slide {
-        flex: 0 0 400px; /* Largura fixa no desktop, igual a imagem de referência */
-        height: 400px;
-    }
-
-    /* O hover no desktop sobrepõe o estado 'active' do scroll */
-    .carousel-slide:hover {
-        opacity: 1;
-    }
-    
-    .carousel-slide:hover .slide-overlay {
-        opacity: 1;
-    }
-}
-
-.card {
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: left;
-    color: white;
-}
-
-.card h3 {
-    margin: 1rem 0;
-}
-
-.card.teal { background-color: var(--primary-teal); color: var(--bg-dark); }
-.card.purple { background-color: var(--card-purple); }
-.card.blue { background-color: var(--card-blue); }
-.card.pink { background-color: var(--card-pink); }
-
-
-/* ==========================================================================
-   TABLETS E DESKTOPS (ESCALANDO PARA TELAS MAIORES)
-   ========================================================================== */
-
-@media (min-width: 768px) {
-    
-    /* Retorna o Navbar para a linha horizontal */
     .navbar {
         flex-direction: row;
         justify-content: space-between;
         padding: 1.5rem 5%;
     }
-    
-    }
+
     .navbar nav {
         margin-left: auto;
         margin-right: 2rem;
     }
 
     .btn-primary {
-        width: auto; /* Remove a largura total do botão */
+        width: auto;
     }
 
-    /* Hero volta para layout de 2 colunas */
     .hero {
         flex-direction: row;
         text-align: left;
@@ -811,17 +737,16 @@ body {
     }
 
     .hero-content h1 {
-        font-size: 4rem; /* Retoma o tamanho original da fonte */
+        font-size: 4rem;
     }
 
     .hero-form {
-        flex-direction: row; /* Coloca input e botão lado a lado */
+        flex-direction: row;
     }
 
-    /* O Notebook ganha suas proporções originais de desktop */
     .placeholder-notebook {
         position: relative;
-        z-index: 2; /* Garante que o notebook fique sobre as manchas */
+        z-index: 2;
         width: 100%;
         max-width: 500px;
         display: flex;
@@ -839,24 +764,22 @@ body {
         width: 115%;
         height: 25px;
     }
-    
-        /* As manchas de fundo (glow) */
+
     .placeholder-notebook::before {
         content: '';
         position: absolute;
-        top: 10%; /* Ajuste a posição vertical */
-        right: -15%; /* Ajuste a posição horizontal para que fiquem para fora do notebook */
-        width: 130%; /* Largura total da mancha */
-        height: 100%; /* Altura total da mancha */
-        background: 
-            radial-gradient(circle at 10% 10%, rgba(56, 178, 172, 0.4) 0%, rgba(56, 178, 172, 0) 50%), /* Mancha Teal à esquerda */
-            radial-gradient(circle at 90% 90%, rgba(102, 126, 234, 0.3) 0%, rgba(102, 126, 234, 0) 60%), /* Mancha Azul à direita */
-            radial-gradient(circle at 50% 50%, rgba(159, 122, 234, 0.2) 0%, rgba(159, 122, 234, 0) 70%); /* Mancha Roxa ao centro */
-        filter: blur(50px); /* Aplica o desfoque para as manchas ficarem suaves */
-        opacity: 0.8; /* Ajuste a opacidade geral */
-        z-index: 1; /* Garante que fiquem atrás do conteúdo do notebook */
-        border-radius: 50%; /* Ajuda a dar forma às manchas */
-        pointer-events: none; /* Garante que as manchas não interfiram em cliques */
+        top: 10%;
+        right: -15%;
+        width: 130%;
+        height: 100%;
+        background: radial-gradient(circle at 10% 10%, rgba(56, 178, 172, 0.4) 0%, rgba(56, 178, 172, 0) 50%),
+                    radial-gradient(circle at 90% 90%, rgba(102, 126, 234, 0.3) 0%, rgba(102, 126, 234, 0) 60%),
+                    radial-gradient(circle at 50% 50%, rgba(159, 122, 234, 0.2) 0%, rgba(159, 122, 234, 0) 70%);
+        filter: blur(50px);
+        opacity: 0.8;
+        z-index: 1;
+        border-radius: 50%;
+        pointer-events: none;
     }
 
     .placeholder-notebook .base::after {
@@ -864,7 +787,6 @@ body {
         height: 10px;
     }
 
-    /* Stats lado a lado */
     .stats {
         flex-direction: row;
         justify-content: center;
@@ -875,17 +797,63 @@ body {
         width: auto;
     }
 
-    /* Features Grid se ajusta automaticamente para várias colunas */
+    .about-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 5rem;
+    }
+
+    .about-text {
+        flex: 1.2;
+    }
+
+    .about-specs {
+        flex: 1;
+    }
+
     .grid-container {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
-    .team-header h2 {
+
+    .carousel-header h2 {
         font-size: 2.5rem;
     }
 
+    .carousel-slide {
+        flex: 0 0 400px;
+        height: 400px;
+    }
+
+    .carousel-slide:hover {
+        opacity: 1;
+    }
+
+    .carousel-slide:hover .slide-overlay {
+        opacity: 1;
+    }
+
     .team-grid {
-        /* Cria 2 colunas para telas médias e grandes, replicando exatamente a imagem */
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
         gap: 4rem 2rem;
     }
-    
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-brand {
+        flex: 2;
+    }
+
+    .footer-links,
+    .footer-social {
+        flex: 1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
