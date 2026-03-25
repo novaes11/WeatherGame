@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoQuest | Sustentabilidade em 8-bits</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <header class="navbar">
+            <div class="center">
+                <div class="logo">WeatherGame</div>
+                <nav>
+                    <a href="#sobre">Sobre o Jogo</a>
+                    <a href="#mecanicas">Mecânicas</a>
+                    <a href="#equipe">Equipe</a>
+                </nav>
+                <button class="btn-primary">Jogar Agora</button>
+            </div>
+        </header>
+
+        <section class="hero center">
+            <div class="hero-content">
+                <h1>Sustentabilidade em 8-bits</h1>
+                <p>Salve o planeta em uma aventura 2D clássica. Aprenda sobre reciclagem, energia limpa e conservação com a nostalgia do Gameboy.</p>
+                
+                <form class="hero-form" onsubmit="event.preventDefault(); alert('Email cadastrado para novidades!');">
+                    <input type="email" placeholder="Seu email acadêmico" required>
+                    <button type="submit" class="btn-primary">Receber Novidades</button>
+                </form>
+
+                <ul class="hero-checks">
+                    <li><div>✓</div> Jogo educativo 100% gratuito.</li>
+                    <li><div>✓</div> Projeto de extensão universitária.</li>
+                    <li><div>✓</div> Funciona direto no navegador.</li>
+                </ul>
+            </div>
+            <div class="hero-image">
+                <div class="placeholder-notebook">
+                    <div class="screen">🕹️ GAME PICTURE SOON...</div>
+                    <div class="base"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats center">
+            <div class="stat-box">
+                <h2>3</h2>
+                <p>Fases Educativas</p>
+            </div>
+            <div class="stat-box">
+                <h2>15+</h2>
+                <p>Desafios Ecológicos</p>
+            </div>
+            <div class="stat-box">
+                <h2>8-bit</h2>
+                <p>Trilha Sonora Original</p>
+            </div>
+        </section>
+
+        <section id="sobre" class="about-section">
+            <div class="about-container center">
+                <div class="about-text">
+                    <h2>Mais que um jogo, uma ferramenta educacional.</h2>
+                    <p>O <strong>WeatherGame</strong> não nasceu para ser apenas um passatempo. Como um projeto de extensão, nosso objetivo central é resolver uma falha de comunicação: como ensinar sustentabilidade e gestão de recursos sem parecer uma palestra entediante?</p>
+                    <p>A resposta foi gamificar o aprendizado. Unimos a nostalgia visual da era 8-bits com mecânicas de causa e consequência. O jogador não apenas lê sobre reciclagem; ele precisa otimizar recursos na prática para não perder o jogo. Todo o motor de regras e física está sendo construído do zero, estruturando a lógica principal em C# para garantir robustez e escalabilidade nos sistemas do jogo.</p>
+                </div>
+                
+                <div class="about-specs">
+                    <div class="spec-card">
+                        <h3>Ficha Técnica</h3>
+                        <ul class="spec-list">
+                            <li><span>Propósito:</span> Projeto de Extensão (UniFil)</li>
+                            <li><span>Gênero:</span> Educacional / Gerenciamento</li>
+                            <li><span>Linguagem Core:</span> C#</li>
+                            <li><span>Estética Visual:</span> Pixel Art 2D Retro</li>
+                            <li><span>Plataforma:</span> Web Browser</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-grid">
+            <div class="center">
+                <h2>Mecânicas Principais</h2>
+                <div class="grid-container">
+                    <div class="card teal">
+                        <div class="icon">♻️</div>
+                        <h3>Reciclagem</h3>
+                        <p>Separe resíduos corretamente para ganhar pontos e limpar o cenário.</p>
+                    </div>
+                    <div class="card purple">
+                        <div class="icon">⚡</div>
+                        <h3>Energia Limpa</h3>
+                        <p>Construa painéis solares e turbinas eólicas.</p>
+                    </div>
+                    <div class="card blue">
+                        <div class="icon">💧</div>
+                        <h3>Uso da Água</h3>
+                        <p>Conserte vazamentos e otimize a irrigação das plantações.</p>
+                    </div>
+                    <div class="card pink">
+                        <div class="icon">🌳</div>
+                        <h3>Reflorestamento</h3>
+                        <p>Plante árvores para recuperar áreas desmatadas do mapa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="carousel-section">
+        <div class="carousel-header">
+            <h2>Galeria do Projeto</h2>
+            <p>Capturas de tela e evolução do desenvolvimento passo a passo.</p>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-track" id="track">
+                
+                <div class="carousel-slide active">
+                    <img src="https://via.placeholder.com/500x500/1f2125/8b929e?text=Screenshot+1" alt="Gameplay 1">
+                    <div class="slide-overlay">
+                        <h3>Mecânica de Reciclagem</h3>
+                        <p>Interface do inventário</p>
+                        <a href="#" class="slide-btn">Saiba mais</a>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/500x500/1f2125/8b929e?text=Screenshot+2" alt="Gameplay 2">
+                    <div class="slide-overlay">
+                        <h3>Fase da Floresta</h3>
+                        <p>Reflorestamento em ação</p>
+                        <a href="#" class="slide-btn">Saiba mais</a>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/500x500/1f2125/8b929e?text=Screenshot+3" alt="Gameplay 3">
+                    <div class="slide-overlay">
+                        <h3>Boss Fight: Poluição</h3>
+                        <p>Desafio final da fase 1</p>
+                        <a href="#" class="slide-btn">Saiba mais</a>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/500x500/1f2125/8b929e?text=Screenshot+4" alt="Gameplay 4">
+                    <div class="slide-overlay">
+                        <h3>Painéis Solares</h3>
+                        <p>Sistema de energia da base</p>
+                        <a href="#" class="slide-btn">Saiba mais</a>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/500x500/1f2125/8b929e?text=Screenshot+4" alt="Gameplay 4">
+                    <div class="slide-overlay">
+                        <h3>Painéis Solares</h3>
+                        <p>Sistema de energia da base</p>
+                        <a href="#" class="slide-btn">Saiba mais</a>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/500x500/1f2125/8b929e?text=Screenshot+4" alt="Gameplay 4">
+                    <div class="slide-overlay">
+                        <h3>Painéis Solares</h3>
+                        <p>Sistema de energia da base</p>
+                        <a href="#" class="slide-btn">Saiba mais</a>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/500x500/1f2125/8b929e?text=Screenshot+4" alt="Gameplay 4">
+                    <div class="slide-overlay">
+                        <h3>Painéis Solares</h3>
+                        <p>Sistema de energia da base</p>
+                        <a href="#" class="slide-btn">Saiba mais</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <button id="prevBtn" class="control-btn">&#8592;</button>
+            <button id="nextBtn" class="control-btn">&#8594;</button>
+        </div>
+    </section>
+
+    <section id="equipe" class="team-section center">
+        <div class="team-header">
+            <h2>Quem construiu isso</h2>
+            <p>Conheça os desenvolvedores por trás da engine e da arte.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="team members/novaes.jpeg" alt="Foto de João Vitor">
+                    <span class="accent-mark purple"></span>
+                </div>
+                <h4 class="team-name">João Vitor Novaes</h4>
+                <span class="team-role">Lead Developer</span>
+                <p class="team-bio">Responsável pela arquitetura do jogo e lógica central em C#, otimizando os ciclos de renderização 2D.</p>
+                <a href="#link-para-o-perfil" class="more-link ">Ver perfil</a>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="team members/henrique.jpg" alt="Foto do Membro 2">
+                    <span class="accent-mark teal"></span>
+                </div>
+                <h4 class="team-name">Henrique Cavalari</h4>
+                <span class="team-role">Game Designer / Artista 2D</span>
+                <p class="team-bio">Gerenciou a criação de assets 2D, paleta de cores 8-bits e level design das 3 fases principais.</p>
+                <a href="https://justtryingtodohomework.github.io/MeuCurriculo" target="_blank" class="more-link">Ver perfil</a>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="team members/foto_joao.jpg" alt="Foto do Membro 3">
+                    <span class="accent-mark blue"></span>
+                </div>
+                <h4 class="team-name">João Vitor Szczypior </h4>
+                <span class="team-role">Programador de Gameplay</span>
+                <p class="team-bio">Implementou os sistemas de colisão, física de movimentação e a lógica de coleta de resíduos.</p>
+                <a href="https://joaoszczypiorzz.github.io/Curriculo/" target="_blank" class="more-link">Ver perfil</a>
+            </div>
+            
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="team members/foto_rafael.jpeg" alt="Foto do Membro 4">
+                    <span class="accent-mark pink"></span>
+                </div>
+                <h4 class="team-name">Rafael Vasconcelos</h4>
+                <span class="team-role">UX/UI Developer</span>
+                <p class="team-bio">Desenvolveu a interface de usuário, painéis de inventário e os menus de navegação do jogo.</p>
+                <a href="#link-para-o-perfil" class="more-link">Ver perfil</a>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="team members/joao.jpeg" alt="Foto de João Camargo">
+                    <span class="accent-mark purple"></span>
+                </div>
+                <h4 class="team-name">João Vitor Ribeiro De Morais Camargo</h4>
+                <span class="team-role">Desenvolvedor de Gameplay</span>
+                <p class="team-bio">Auxiliou no desenvolvimento das mecânicas do jogo, estruturação do projeto e na implementação de funcionalidades.</p>
+                <a href="https://jcamargo26.github.io/CurriculoJoao/" class="more-link">Ver perfil</a>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="team members/icon.jpg" alt="Foto do Membro 6">
+                    <span class="accent-mark teal"></span>
+                </div>
+                <h4 class="team-name">Nome do Colega 6</h4>
+                <span class="team-role">QA & Testes</span>
+                <p class="team-bio">Realizou os testes de bugs, balanceamento da dificuldade e documentação técnica do projeto.</p>
+                <a href="#link-para-o-perfil" class="more-link">Ver perfil</a>
+            </div>
+        </div>
+    </section>    
+
+    <footer class="site-footer">
+        <div class="footer-container center">
+            <div class="footer-brand">
+                <div class="logo">WeatherGame</div>
+                <p>Projeto de extensão universitária do curso de Ciência da Computação da UniFil. Desenvolvido para promover a sustentabilidade através de mecânicas 8-bits.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Projeto</h4>
+                <a href="#sobre">Sobre o Jogo</a>
+                <a href="#mecanicas">Mecânicas</a>
+                <a href="#equipe">Equipe</a>
+            </div>
+
+            <div class="footer-social">
+                <h4>Desenvolvimento</h4>
+                <a href="#" target="_blank">Repositório no GitHub</a>
+                <a href="#">Documentação Técnica</a>
+                <a href="mailto:seuemail@institucional.br">Contato da Equipe</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Equipe WeatherGame. Distribuído para fins educacionais.</p>
+        </div>
+    </footer>
+    <button id="meuBotao">Clique Aqui</button>
+    <script src="scripts/carrossel.js"></script>
+    <script src="scripts/popover.js"></script>
+</body>
+</html>
